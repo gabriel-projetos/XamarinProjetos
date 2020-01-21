@@ -4,27 +4,36 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:vm="clr-namespace:app1_testeDrive.ViewModels"
              Title="Teste Drive"
              x:Class="app1_testeDrive.Views.ListagemView">
-    
-    <!--Binding traga a lista de veiculos do c# e coloque no listview -->
-    <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" Margin="25"
-              ItemTapped="listViewVeiculos_ItemTapped">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <ViewCell.View>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Nome}" FontSize="20" VerticalTextAlignment="Center" TextColor="red"
-                                   ></Label>
-                            <Label Text=" - " VerticalTextAlignment="Center"></Label>
-                            <Label Text="{Binding PrecoFormatado}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
-                            <!--<Label Text="{Binding Teste}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>-->
-                        </StackLayout>
-                    </ViewCell.View>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView> 
-
+    <StackLayout Margin="25">
+        <!--IsRunning Indicador de atividade se aplicação está ocupada-->
+        <!--IsVisible qmd ñ estiver rodando, seja invisivel-->
+        <!-- Binding amarrado com a propriedade Aguarde do viewmodel -->
+        <ActivityIndicator IsRunning="{Binding Aguarde}"
+                           IsVisible="{Binding Aguarde}">
+            
+        </ActivityIndicator>
+        <!--Binding traga a lista de veiculos do c# e coloque no listview -->
+        <!--SelectItem Fica amarrado a algum valor da viewmodel -->
+        <ListView x:Name="listViewVeiculos" ItemsSource="{Binding Veiculos}" 
+                  SelectedItem="{Binding VeiculoSelecionado}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Nome}" FontSize="20" VerticalTextAlignment="Center" TextColor="red"
+                                       ></Label>
+                                <Label Text=" - " VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding PrecoFormatado}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>
+                                <!--<Label Text="{Binding Teste}" FontAttributes="Bold" VerticalTextAlignment="Center"></Label>-->
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using app1_testeDrive.Models;
+using app1_testeDrive.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,46 +13,44 @@ namespace app1_testeDrive.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public class Veiculo
-    {
-        public string Nome { get; set; }
-        public decimal Preco { get; set; }
-        public string PrecoFormatado
-        {
-            get { return string.Format("R$ {0}", Preco); }
-        }
-        //public decimal Teste { get; set; }
-    }
+
     public partial class ListagemView : ContentPage
-    {
-        public List<Veiculo> Veiculos { get; set; }
+    { 
+        //ViewModel contem uma instancia de ListagemViewModel
+        public ListagemViewModel ViewModel { get; set; }
+
         public ListagemView()
         {
             InitializeComponent();
+            this.ViewModel = new ListagemViewModel();
+            this.BindingContext = this.ViewModel;
 
-            //This significa referencia
-            this.Veiculos = new List<Veiculo>()
-            {
-                new Veiculo {Nome = "Azera V6", Preco = 60000, /*Teste = 4*/},
-                new Veiculo {Nome = "Fiesta 2.0", Preco = 50000},
-                new Veiculo {Nome = "HB20 S", Preco = 40000},
-
-            };
             //Muda o contexto, defini o contexto de binding da página no final do construtor da página.
-            this.BindingContext = this;
+            //this.BindingContext = this;
         }
 
-        private void listViewVeiculos_ItemTapped(object sender, ItemTappedEventArgs e)
+        //Ao aparecer
+        protected async override void OnAppearing()
         {
-            //Converte o objeto no veiculo
-            var veiculo = (Veiculo)e.Item;
+            base.OnAppearing();
+            //Tipo de argumento que está sendo enviado, qual o conteudo da msg
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado", 
+                (msg) =>
+                {
+                    /*msg = Execução para navegar para a proxima pg, expressão lambda
+                    Executa qnt a msg for recebida, qnt for capturada pela view*/
+                    
+                    //qnd toca em um item na lista, o úsuario é levado para a proxima pagina
+                    //Empilha as paginas, Assincrono retorna o comando imediatamente, ñ bloqueia
+                    Navigation.PushAsync(new DetalheView(msg));
+                });
+            await this.ViewModel.GetVeiculos();
+        }
 
-            /* DisplayAlert("Teste Drive", string.Format("Você tocou no modelo: {0}, Que custa" +
-                ": {1} ",veiculo.Nome, veiculo.PrecoFormatado), "SAIR"); */
-
-            //Empilha as paginas, Assincrono retorna o comando imediatamente, ñ bloqueia
-            Navigation.PushAsync(new DetalheView(veiculo));
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
         }
     }
 }

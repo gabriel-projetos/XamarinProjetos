@@ -1,4 +1,6 @@
-﻿using System;
+﻿using app1_testeDrive.Models;
+using app1_testeDrive.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,17 +15,36 @@ namespace app1_testeDrive.Views
     public partial class DetalheView : ContentPage
     {
         public Veiculo Veiculo { get; set; }
+            
+        //Construtor
         public DetalheView(Veiculo veiculo)
         {
             InitializeComponent();
-            this.Title = veiculo.Nome;
             this.Veiculo = veiculo;
+            //Chamada do construtor
+            this.BindingContext = new DetalheViewModel(veiculo);
 
         }
-
-        private void buttonProximo_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new AgendamentoView(this.Veiculo));
+            base.OnAppearing();
+            //this:Referencia de quem está assinando, o proprio codebehind no caso
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg) => 
+            {
+                //msg contem o veiculo que está sendo escolhido durante o fluxo da app
+                //Vai colocar mais uma pagina na pilha de navegação 
+                //Só é executado qnd uma msg do tipo "Proximo" for enviada
+                Navigation.PushAsync(new AgendamentoView(msg));
+            });
+
+            //ViewModel 
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            //this:Referencia de quem está cancelando a assinado, o proprio codebehind no caso
+            MessagingCenter.Unsubscribe<Veiculo>(this, "Proximo");
         }
     }
 }
