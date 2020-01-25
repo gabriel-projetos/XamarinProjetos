@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:app1_testeDrive.ViewModels"
+             mc:Ignorable="d"
+             x:Class="app1_testeDrive.Views.LoginView">
+    <!--Usando o codigo c# this.BindingContext-->
+    <ContentPage.BindingContext>
+        <!--Criando uma nova instancia do objeto LVM-->
+        <vm:LoginViewModel></vm:LoginViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout VerticalOptions="Center" Margin="55">
+        <Image Source="aluracar.png"></Image>
+        <!--Entry esta recebendo o valor de Usuario da LoginViewModel-->
+        <Entry Placeholder="Usuário" Text="{Binding Usuario}"></Entry>
+        
+        <!--Entry esta recebendo o valor de Senha da LoginViewModel-->
+        <Entry Placeholder="Senha" IsPassword="True" Text="{Binding Senha}"></Entry>
+        
+        <!--EntrarCommand é uma instancia de um comando que estára no loginviewMOdel  -->
+        <Button Text="Entrar" Command="{Binding EntrarCommand}"></Button>
+    </StackLayout>
+</ContentPage>
