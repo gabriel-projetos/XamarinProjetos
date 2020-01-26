@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:app1_testeDrive.Converters"
+             mc:Ignorable="d"
+             x:Class="app1_testeDrive.Views.MasterView"
+             Title="Perfil">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <converters:NegativoConverter x:Key="negativo"></converters:NegativoConverter>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <!--Páginas filhas-->
+    <TabbedPage.Children>
+        <ContentPage Title="Usuário">
+            <!--Moldura-->
+            <Frame OutlineColor="Silver"
+           VerticalOptions="CenterAndExpand"
+           Margin="15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                    <!--propriedades da MasterViewModel-->
+                    <Label Text="{Binding Nome}"></Label>
+                    <BoxView Color="Gray" HeightRequest="2" HorizontalOptions="Fill"></BoxView>
+
+                    <!--propriedades da MasterViewModel-->
+                    <Label Text="{Binding Email}"></Label>
+                    <BoxView Color="Gray" HeightRequest="2" HorizontalOptions="Fill"></BoxView>
+
+                    <!--Amarração com o command criado em MasterViewModel-->
+                    <Button Text="Perfil" Command="{Binding EditarPerfilCommand}"></Button>
+                </StackLayout>
+            </Frame>
+        </ContentPage>
+            
+        <ContentPage Title="Editar">
+            <!--Moldura-->
+            <Frame OutlineColor="Silver"
+           VerticalOptions="CenterAndExpand"
+           Margin="15">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <!--TableView: Coleta de dados-->
+                    <TableView>
+                        <TableRoot>
+                            <TableSection Title="Dados Pessoais">
+                                <!--binding com MasterViewModel, controla os dados e a digitação-->
+                                <EntryCell Placeholder="Nome" Text="{Binding Nome}" 
+                                           IsEnabled="{Binding Editando}"></EntryCell>
+                                <EntryCell Placeholder="Data de Nascimento" Text="{Binding DataNascimento}" 
+                                           IsEnabled="{Binding Editando}"></EntryCell>
+                                <EntryCell Placeholder="Telefone" Text="{Binding Telefone}"
+                                           IsEnabled="{Binding Editando}"></EntryCell>
+                                <EntryCell Placeholder="Email" Text="{Binding Email}" 
+                                           IsEnabled="{Binding Editando}"></EntryCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                    <!--Daqui pula para a action que está definida em MasterViewModel-->
+                    <Button Text="Salvar" Command="{Binding SalvarCommand}" 
+                            IsVisible="{Binding Editando}"></Button>
+                    <Button Text="Editar" Command="{Binding EditarCommand}" 
+                            IsVisible="{Binding Editando, Converter={StaticResource Key = negativo}}"></Button>
+                </StackLayout>
+            </Frame>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

@@ -9,15 +9,17 @@ namespace app1_testeDrive.ViewModels
     //Abstract pq ngm vai utilizar, e sim vao fazer herança da classe
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
-        //Notificar que uma propriedade foi alterada.
+        //Notificar a view que uma propriedade foi alterada.
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //CallerMemberName se n passar nd, ele assume o NAME de quem chamou o metodo
+
+        //Notificar a view que uma propriedade foi alterada.
+        //CallerMemberName se n passar nd, ele assume o nameof/Propriedade de quem chamou o metodo
         public void OnPropertyChanged([CallerMemberName]string name = "")
         {
             if (PropertyChanged != null)
             {
-                //this: quem chama.
+                //this: quem chama é a propria classe
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(name));
             }
         }

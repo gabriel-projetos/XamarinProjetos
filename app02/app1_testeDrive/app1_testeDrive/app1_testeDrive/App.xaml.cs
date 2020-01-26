@@ -29,11 +29,13 @@ namespace app1_testeDrive
             //this: pq é a propria classe app que está capturando a msg
             MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin",
                 //Expressão lambda recebe de um usuario
-                (Usuario) => 
+                (usuario) => 
                 {
                     //Tratar o procedimento qnd a msg for capturada
                     //Aqui trocaremos a mainPage para dps do login abrir ListagemView
-                    MainPage = new NavigationPage(new ListagemView());
+                    //MainPage = new NavigationPage(new ListagemView());
+
+                    MainPage = new MasterDetailView(usuario);
                 });
 
         }

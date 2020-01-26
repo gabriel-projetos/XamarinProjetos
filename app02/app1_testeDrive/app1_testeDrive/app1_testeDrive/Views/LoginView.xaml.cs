@@ -18,15 +18,28 @@ namespace app1_testeDrive.Views
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        //Capturara a mensagem
+        protected override void OnAppearing()
         {
-            //MsgCenter a partir do loginviewmodel vai avisar a classe app.xaml
-            //que existe uma nova MainPage que vai ser definida pela aplicação
-            //A mensagem será recebida na classe app
+            base.OnAppearing();
 
-            //<Tipo da mensagem>(Criando um Usuario)
-            //Usuario clicou no btão entrar, é enviado a msg de SucessoLogin
-            MessagingCenter.Send<Usuario>(new Usuario(), "SucessoLogin");
+            //Tipo da mensagem, quem está assinando this pq é a propria classe
+            //Nome do tipo de mensagem
+            //ação qnd a mensagem é recebida no caso o erro
+            MessagingCenter.Subscribe<LoginExeception>(this, "FalhaLogin",
+                async (exe) =>
+                {
+                    await DisplayAlert("Login", exe.Message, "OK");
+                });
         }
+
+        //Cancelar assim que a view deixa de aparecer
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            MessagingCenter.Unsubscribe<LoginExeception>(this, "FalhaLogin");
+        }
+
     }
 }

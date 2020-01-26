@@ -12,4 +12,9 @@ namespace app1_testeDrive.Models
         public string telefone { get; set; }
         public string email { get; set; }
     }
+
+    public class ResultadoLogin
+    {
+        public Usuario usuario { get; set; }
+    }
 }
