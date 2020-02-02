@@ -1,6 +1,8 @@
-﻿using app1_testeDrive.Models;
+﻿using app1_testeDrive.Midia;
+using app1_testeDrive.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -47,7 +49,21 @@ namespace app1_testeDrive.ViewModels
 				OnPropertyChanged();
 			}
 		}
+		
+		//binding com a Image em masterview
+		private ImageSource fotoPerfil = "perfil.png";
 
+		public ImageSource FotoPerfil
+		{
+			get { return fotoPerfil; }
+			private set 
+			{ 
+				fotoPerfil = value;
+
+				//Informa a view que teve alteração na tela
+				OnPropertyChanged();
+			}
+		}
 
 
 		//Armazena localmente uma instancia do usuario nessa classe
@@ -58,17 +74,34 @@ namespace app1_testeDrive.ViewModels
 		public ICommand EditarPerfilCommand { get; private set; }
 		public ICommand SalvarCommand { get; private set; }
 		public ICommand EditarCommand { get; private set; }
+		public ICommand TirarFotoCommand { get; private set; }
+		public ICommand MeusAgendamentosCommand { get; private set; }
+		public ICommand NovoAgendamentoCommand { get; private set; }
 
 		//Construtor recebendo um usuario como parametro
 		public MasterViewModel(Usuario usuario)
 		{
 			this.usuario = usuario;
 			DefinirComandos(usuario);
+			AssinarMensagens();
+		}
+
+		private void AssinarMensagens()
+		{
+			//array que vem de MainActivity
+			MessagingCenter.Subscribe<byte[]>(this, "FotoTirada",
+				(bytes) =>
+				{
+					//Le o array de bytes e converte em um imageSource
+					FotoPerfil = ImageSource.FromStream(
+						() => new MemoryStream(bytes));
+				});
 		}
 
 		private void DefinirComandos(Usuario usuario)
 		{
-			//recebe uma action, instanciando
+			//os comandos recebem uma action no construtor. Instanciamento dos comandos
+
 			EditarPerfilCommand = new Command(() =>
 			{
 				//Corpo do action/código que sera executado qnd o botao for clicado
@@ -87,6 +120,32 @@ namespace app1_testeDrive.ViewModels
 
 				//Precisa notificar a view que teve alteração na propriedade
 				this.Editando = true;
+			});
+
+			//Diz para o MasterView.xaml oq fazer qnd o command/botao for executado
+			//Recebe uma action como parametro ((action)) qnd TirarFoto for clicado
+			TirarFotoCommand = new Command(() => 
+			{
+				//Chamar o serviço de dependencia do xamarim
+				//para obter a instancia que implementa o ICamera
+				//Get: pegar ou obter uma instancia que implementa a interface ICamera<Interface>
+				//é necessario registrar a instancia antes de obter
+				//vai chamar o metodo no MainActivity no projeto droid
+				DependencyService.Get<ICamera>().TirarFoto();
+			});
+
+			MeusAgendamentosCommand = new Command(() =>
+			{
+				//Corpo do action/código que sera executado qnd o botao for clicado
+				/*<Objeto que está em anexo na mensagem>
+				 * Instancia do objeto em anexo
+				 */
+				MessagingCenter.Send<Usuario>(usuario, "MeusAgendamentos");
+			});
+
+			NovoAgendamentoCommand = new Command(() =>
+			{
+				MessagingCenter.Send<Usuario>(usuario, "NovoAgendamento");
 			});
 		}
 	}

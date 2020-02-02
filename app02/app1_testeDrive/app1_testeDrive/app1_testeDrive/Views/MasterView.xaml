@@ -21,6 +21,8 @@
            Margin="15">
                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
+                    <Image Source="{Binding FotoPerfil}"></Image>
+                    
                     <!--propriedades da MasterViewModel-->
                     <Label Text="{Binding Nome}"></Label>
                     <BoxView Color="Gray" HeightRequest="2" HorizontalOptions="Fill"></BoxView>
@@ -31,6 +33,10 @@
 
                     <!--Amarração com o command criado em MasterViewModel-->
                     <Button Text="Perfil" Command="{Binding EditarPerfilCommand}"></Button>
+                    <!--Amarração com o command criado em MasterViewModel-->
+                    <Button Text="Meus Agendamentos" Command="{Binding MeusAgendamentosCommand}"></Button>
+                    <!--Amarração com o command criado em MasterViewModel-->
+                    <Button Text="Novo Agendamento" Command="{Binding NovoAgendamentoCommand}"></Button>
                 </StackLayout>
             </Frame>
         </ContentPage>
@@ -41,6 +47,10 @@
            VerticalOptions="CenterAndExpand"
            Margin="15">
                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <!--Binding com masterviewmodel-->
+                    <Image Source="{Binding FotoPerfil}"></Image>
+                    <Button Text="Tirar Foto" Command="{Binding TirarFotoCommand}"></Button>
+
                     <!--TableView: Coleta de dados-->
                     <TableView>
                         <TableRoot>

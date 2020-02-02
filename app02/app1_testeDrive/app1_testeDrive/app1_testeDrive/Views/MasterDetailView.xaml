@@ -14,14 +14,14 @@
     <!--MasterDetailPage.Master>-->
 
 
-    <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
+    <!--<MasterDetailPage.Detail>-->
+    <!-- <NavigationPage>-->
+    <!-- <x:Arguments>-->
                 <!-- listagem de veiculos (navegação) -->
                 <!--Detail é a pagina que sera exibida primeiro, no caso ListagemView-->
                 <!--Usando listagemview que foi pego pelo namespace insrido-->
-                <view:ListagemView></view:ListagemView>
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
+    <!-- <view:ListagemView></view:ListagemView>-->
+    <!--</x:Arguments>-->
+    <!--</NavigationPage>-->
+    <!--</MasterDetailPage.Detail>-->
 </MasterDetailPage>

@@ -19,10 +19,12 @@ namespace app1_testeDrive.Views
         //ViewModel contem uma instancia de ListagemViewModel
         public ListagemViewModel ViewModel { get; set; }
 
-        public ListagemView()
+        readonly Usuario usuario;
+        public ListagemView(Usuario usuario)
         {
             InitializeComponent();
             this.ViewModel = new ListagemViewModel();
+            this.usuario = usuario;
             this.BindingContext = this.ViewModel;
 
             //Muda o contexto, defini o contexto de binding da página no final do construtor da página.
@@ -33,24 +35,42 @@ namespace app1_testeDrive.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            AssinarMensagens();
+
+            await this.ViewModel.GetVeiculos();
+        }
+
+        private void AssinarMensagens()
+        {
             //Tipo de argumento que está sendo enviado, qual o conteudo da msg
-            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado", 
-                (msg) =>
+            MessagingCenter.Subscribe<Veiculo>(this, "VeiculoSelecionado",
+                (veiculo) =>
                 {
                     /*msg = Execução para navegar para a proxima pg, expressão lambda
                     Executa qnt a msg for recebida, qnt for capturada pela view*/
-                    
+
                     //qnd toca em um item na lista, o úsuario é levado para a proxima pagina
                     //Empilha as paginas, Assincrono retorna o comando imediatamente, ñ bloqueia
-                    Navigation.PushAsync(new DetalheView(msg));
+                    Navigation.PushAsync(new DetalheView(veiculo, usuario));
                 });
-            await this.ViewModel.GetVeiculos();
+
+            MessagingCenter.Subscribe<Exception>(this, "FalhaListagem",
+                (msg) =>
+                {
+                    DisplayAlert("Erro", "Ocorreu um erro ao obter a listagem de veículos", "OK");
+                });
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            CancelarAssinatura();
+        }
+
+        private void CancelarAssinatura()
+        {
             MessagingCenter.Unsubscribe<Veiculo>(this, "VeiculoSelecionado");
+            MessagingCenter.Unsubscribe<Exception>(this, "FalhaListagem");
         }
     }
 }

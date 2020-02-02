@@ -70,15 +70,18 @@ namespace app1_testeDrive.ViewModels
             //Para obter os objs do sistema, tem que DESEREALIZAR a string em um Array de objetos
             var veiculosJson = JsonConvert.DeserializeObject<VeiculoJson[]>(resultado);
 
-            //ParaCada veiculoJson em veiculosJson
-            foreach (var veiculoJson in veiculosJson)
+            if (Veiculos.Count < 1)
             {
-                //Alimentando a LISTA
-                this.Veiculos.Add(new Veiculo
+                //ParaCada veiculoJson em veiculosJson
+                foreach (var veiculoJson in veiculosJson)
                 {
-                    Nome = veiculoJson.nome,
-                    Preco = veiculoJson.preco
-                });
+                    //Alimentando a LISTA
+                    this.Veiculos.Add(new Veiculo
+                    {
+                        Nome = veiculoJson.nome,
+                        Preco = veiculoJson.preco
+                    });
+                }
             }
 
             Aguarde = false;

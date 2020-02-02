@@ -14,13 +14,15 @@ namespace app1_testeDrive.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetalheView : ContentPage
     {
-        public Veiculo Veiculo { get; set; }
+        public Veiculo Veiculo { get; private set; }
+        public Usuario Usuario { get; private set; }
             
         //Construtor
-        public DetalheView(Veiculo veiculo)
+        public DetalheView(Veiculo veiculo, Usuario usuario)
         {
             InitializeComponent();
             this.Veiculo = veiculo;
+            this.Usuario = usuario;
             //Chamada do construtor
             this.BindingContext = new DetalheViewModel(veiculo);
 
@@ -29,12 +31,12 @@ namespace app1_testeDrive.Views
         {
             base.OnAppearing();
             //this:Referencia de quem está assinando, o proprio codebehind no caso
-            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (msg) => 
+            MessagingCenter.Subscribe<Veiculo>(this, "Proximo", (veiculo) => 
             {
                 //msg contem o veiculo que está sendo escolhido durante o fluxo da app
                 //Vai colocar mais uma pagina na pilha de navegação 
                 //Só é executado qnd uma msg do tipo "Proximo" for enviada
-                Navigation.PushAsync(new AgendamentoView(msg));
+                Navigation.PushAsync(new AgendamentoView(veiculo, this.Usuario));
             });
 
             //ViewModel 

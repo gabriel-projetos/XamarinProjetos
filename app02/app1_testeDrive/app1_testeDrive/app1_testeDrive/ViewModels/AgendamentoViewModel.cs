@@ -1,31 +1,34 @@
-﻿using app1_testeDrive.Models;
+﻿using app1_testeDrive.Data;
+using app1_testeDrive.Models;
+using app1_testeDrive.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace app1_testeDrive.ViewModels
 {
     public class AgendamentoViewModel : BaseViewModel
-    {
-                                             
-        const string URL_POST_AGENDAMENTO = "https://aluracar.herokuapp.com/salvaragendamento";
+    {                                           
         public Agendamento Agendamento { get; set; }
 
-        public Veiculo Veiculo
+        public string Modelo
         {
-            get
-            {
-                return Agendamento.Veiculo;
-            }
-            set
-            {
-                Agendamento.Veiculo = value;
-            }
+            get { return this.Agendamento.Modelo; }
+            set { this.Agendamento.Modelo = value; }
         }
+
+        public decimal Preco
+        {
+            get { return this.Agendamento.Preco; }
+            set { this.Agendamento.Preco = value; }
+        }
+
+
         public string Nome
         {
             get
@@ -98,11 +101,11 @@ namespace app1_testeDrive.ViewModels
             }
         }
 
-        public AgendamentoViewModel(Veiculo veiculo)
+        public AgendamentoViewModel(Veiculo veiculo, Usuario usuario)
         {
             //Construtor
-            this.Agendamento = new Agendamento();
-            this.Agendamento.Veiculo = veiculo;
+            this.Agendamento = new Agendamento(usuario.nome,
+                usuario.telefone, usuario.email, veiculo.Nome, veiculo.Preco);
 
             AgendarCommand = new Command(() =>
             {
@@ -123,35 +126,8 @@ namespace app1_testeDrive.ViewModels
 
         public async void SalvarAgendamento()
         {
-            HttpClient cliente = new HttpClient();
-
-            var dataHoraAgendamento = new DateTime(
-                DataAgendamento.Year, DataAgendamento.Month, DataAgendamento.Day,
-                HoraAgendamento.Hours, HoraAgendamento.Minutes, HoraAgendamento.Seconds
-                );
-
-            //Json a partir dos objetos.
-            var Json = JsonConvert.SerializeObject(new
-            {
-                nome = Nome,
-                fone = Fone,
-                email = Email,
-                carro = Veiculo.Nome,
-                preco = Veiculo.Preco,
-                dataAgendamento = dataHoraAgendamento
-            });
-
-            var conteudo = new StringContent(Json, Encoding.UTF8, "application/json");
-            //Aguardar o resultado vindo do await para continuar a execução
-            var resposta = await cliente.PostAsync(URL_POST_AGENDAMENTO, conteudo);
-
-            //Se a requisição foi bem sucessida
-            if (resposta.IsSuccessStatusCode)
-                //this.agendamento(guarda os dados do agendamento)
-                MessagingCenter.Send<Agendamento>(this.Agendamento, "SucessoAgendamento");
-            else
-                MessagingCenter.Send<ArgumentException>(new ArgumentException(), "FalhaAgendamento");
-            //URL_POST_AGENDAMENTO
+            AgendamentoService agendamentoService = new AgendamentoService();
+            await agendamentoService.EnviarAgendamento(this.Agendamento);
         }
     }
 }

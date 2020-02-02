@@ -17,10 +17,10 @@ namespace app1_testeDrive.Views
         public AgendamentoViewModel ViewModel { get; set; }
 
         //Construtor
-        public AgendamentoView(Veiculo veiculo)
+        public AgendamentoView(Veiculo veiculo, Usuario usuario)
         {
             InitializeComponent();
-            this.ViewModel = new AgendamentoViewModel(veiculo);
+            this.ViewModel = new AgendamentoViewModel(veiculo, usuario);
             //Passando o contexto do Binding para a pagina, veiculo que esta sendo recebido
             this.BindingContext = this.ViewModel;
         }
@@ -29,13 +29,18 @@ namespace app1_testeDrive.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            AssinarMensagens();
+        }
+
+        private void AssinarMensagens()
+        {
             //Tipo de msg, argumentos quem está assinando, nome da msg
             MessagingCenter.Subscribe<Agendamento>(this, "Agendamento",
                 async (msg) =>
                 {
-                var confirma = await DisplayAlert("Salvar Agendamento",
-                "Confirmar Agendamento ?",
-                "Sim", "Não");
+                    var confirma = await DisplayAlert("Salvar Agendamento",
+                    "Confirmar Agendamento ?",
+                    "Sim", "Não");
 
                     if (confirma)
                     {
@@ -44,16 +49,21 @@ namespace app1_testeDrive.Views
                 });
 
             //Quando a mensagem chegar em msg, é executado o codigo.
-            MessagingCenter.Subscribe<Agendamento>(this, "SucessoAgendamento", (msg) =>
-            {
-                DisplayAlert("Agendamento", "Agendamento salvo com sucesso!", "OK");
-            });
+            MessagingCenter.Subscribe<Agendamento>(this, "SucessoAgendamento",
+                async (msg) =>
+                {
+                    await DisplayAlert("Agendamento", "Agendamento salvo com sucesso!", "OK");
+                    //Desempilhar a pilha de navegção até a raiz   
+                    await Navigation.PopToRootAsync();
+                });
 
-            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento", (msg) =>
+            MessagingCenter.Subscribe<ArgumentException>(this, "FalhaAgendamento", async (msg) =>
             {
-                DisplayAlert("Agendameto", "Falha ao agendar!", "OK");
+                await DisplayAlert("Agendameto", "Falha ao agendar!", "OK");
+                await Navigation.PopToRootAsync();
             });
         }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
