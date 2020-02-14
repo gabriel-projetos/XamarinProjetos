@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Menu de Seleção"
+             x:Class="GerenciadorNotas.Views.MenuView">
+    <ContentPage.Content>
+        <Grid Margin="12">
+            <Grid.ColumnDefinitions>
+                <!--Propriedades: pixels, Auto: Assume o tamanho do conteudo, * : Expande o maximo que der -->
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <!--Propriedades: pixels, Auto: Assume o tamanho do conteudo, * : Expande o maximo que der -->
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                
+            </Grid.RowDefinitions>
+
+            <Button x:Name="buttonCadastro" Text="Meu Cadastro" Grid.Column="0" Grid.Row="0" BackgroundColor="LightBlue"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Command="{Binding MeuCadastroCommand}"/>
+            
+            <Button Text="Dados do Curso" Grid.Column="0" Grid.Row="1" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                    Command="{Binding DadosCursoCommand}"/>
+            
+            <Button Text="Notas e Faltas Bimestrais" Grid.Column="1" Grid.Row="1" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                    Command="{Binding NotasFaltasCommand}"/>
+            
+            <Button Text="Integralização Curricular" Grid.Column="1" Grid.Row="0" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                    Command="{Binding IntegralizacaoCurricularCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,6 +6,7 @@ namespace app1_testeDrive.Models
 {
     public class Usuario
     {
+        //Dados que aparecem a tela MasterView - EDITAR
         public int id { get; set; }
         public string nome { get; set; }
         public string dataNascimento { get; set; }

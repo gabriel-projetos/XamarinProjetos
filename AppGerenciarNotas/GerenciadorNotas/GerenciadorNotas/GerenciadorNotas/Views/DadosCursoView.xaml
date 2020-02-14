@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GerenciadorNotas.Views.DadosCursoView"
+             Title="Dados do Curso">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Data" Margin="15">
+                <TableRoot>
+                    <TableSection Title="Dados do Curso">
+                        <EntryCell Label="Curso: " Text="{Binding Curso}"
+                                   IsEnabled="False"></EntryCell>
+                        <EntryCell Label="Unidade: " Text="Tatuapé"
+                                   IsEnabled="False"></EntryCell>
+                        <EntryCell Label="Turma: " Text="CC2P33"
+                                   IsEnabled="False"></EntryCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

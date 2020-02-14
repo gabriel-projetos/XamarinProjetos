@@ -70,7 +70,6 @@ namespace app1_testeDrive.Views
             //A gente cancela a assinatura para que a msg n seja executada varias vezes
             //para nao causar conflito
             MessagingCenter.Unsubscribe<Agendamento>(this, "Agendamento");
-
             MessagingCenter.Unsubscribe<Agendamento>(this, "SucessoAgendamento");
             MessagingCenter.Unsubscribe<ArgumentException>(this, "FalhaAgendamento");
         }

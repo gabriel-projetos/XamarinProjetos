@@ -23,6 +23,7 @@
         <Label Text="Esta é a página de detalhes" 
            VerticalOptions="CenterAndExpand" 
            HorizontalOptions="CenterAndExpand"></Label>
+
         <Button x:Name="buttonProximo" Text="Proximo"
                 Command="{Binding ProximoCommand}"
                 VerticalOptions="End"></Button>

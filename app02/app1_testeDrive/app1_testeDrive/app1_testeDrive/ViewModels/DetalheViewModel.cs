@@ -107,7 +107,7 @@ namespace app1_testeDrive.ViewModels
             ProximoCommand = new Command(() =>
             {
                 //Centro de msg do xamarim
-                //veiculo pq quem está selecionado
+                //veiculo pq é quem está selecionado
                 MessagingCenter.Send(veiculo, "Proximo");
             });
         }
