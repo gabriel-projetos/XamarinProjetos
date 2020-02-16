@@ -54,6 +54,8 @@ namespace app1_testeDrive.ViewModels
         public ListagemViewModel()
         {
             //Lista Inicializada
+            //Envez de usar List usamos o ObservableCollection
+            //Para que a view fique sabendo que houve alteração na lista
             this.Veiculos = new ObservableCollection<Veiculo>();
         }
 

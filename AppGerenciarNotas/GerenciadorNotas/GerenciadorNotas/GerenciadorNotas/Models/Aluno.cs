@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GerenciadorNotas.Models
 {
-    public class Usuario
+    public class Aluno
     {
         /********* Referente a tela MeuCadastro **************/
         public int id { get; set; }

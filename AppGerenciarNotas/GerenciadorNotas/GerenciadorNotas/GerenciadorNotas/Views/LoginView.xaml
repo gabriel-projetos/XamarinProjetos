@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:vm="clr-namespace:GerenciadorNotas.ViewModel"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GerenciadorNotas.Views.LoginView">
-    <ContentPage.Content>
-        <StackLayout Padding="52" VerticalOptions="Center">
-            <Entry Placeholder="Usuário"></Entry>
-            <Entry Placeholder="Senha"></Entry>
-            <Button Text="Entrar"></Button>
-        </StackLayout>
-    </ContentPage.Content>
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel></vm:LoginViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout Padding="52" VerticalOptions="Center">
+            <Entry Placeholder="Usuário" Text="{Binding Ra}"></Entry>
+            <Entry Placeholder="Senha" Text="{Binding Senha}" IsPassword="True"></Entry>
+            <Button Text="Entrar" Command="{Binding EntrarCommand}"></Button>
+    </StackLayout>
 </ContentPage>

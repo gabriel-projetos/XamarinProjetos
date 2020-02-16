@@ -27,11 +27,7 @@ namespace GerenciadorNotas.ViewModel
             get { return this.usuario.turma; }
             set { this.usuario.turma = value; }
         }
-
-        private readonly Usuario usuario;
-
-       
-
+        private readonly Aluno usuario;
 
     }
 }

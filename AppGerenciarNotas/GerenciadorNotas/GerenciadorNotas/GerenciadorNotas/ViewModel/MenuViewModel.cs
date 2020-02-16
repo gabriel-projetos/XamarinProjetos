@@ -10,7 +10,6 @@ namespace GerenciadorNotas.ViewModel
 {
     public class MenuViewModel
     {
-
         public ICommand MeuCadastroCommand { get; set; }
         public ICommand DadosCursoCommand { get; set; }
         public ICommand NotasFaltasCommand { get; set; }

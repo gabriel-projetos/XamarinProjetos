@@ -23,6 +23,8 @@ namespace app1_testeDrive.Views
         public ListagemView(Usuario usuario)
         {
             InitializeComponent();
+
+            //Mudando o contexto do Binding para passar a ser a ViewModel envez do CodeBehind
             this.ViewModel = new ListagemViewModel();
             this.usuario = usuario;
             this.BindingContext = this.ViewModel;
