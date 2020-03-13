@@ -11,7 +11,9 @@
             <TableView Intent="Data" Margin="15">
                 <TableRoot>
                     <TableSection Title="Dados do Curso">
-                        <EntryCell Label="Curso: " Text="{Binding Curso}"
+                        <EntryCell Label="Nome: " Text="Mylene Caldeira"
+                                   IsEnabled="False"></EntryCell>
+                        <EntryCell Label="Curso: " Text="Farmácia"
                                    IsEnabled="False"></EntryCell>
                         <EntryCell Label="Unidade: " Text="Tatuapé"
                                    IsEnabled="False"></EntryCell>
