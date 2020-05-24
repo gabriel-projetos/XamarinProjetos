@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using apiEF.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace WebApplication1.Controllers
+namespace apiEF.Controller
 {
     //Obtenha o template string no atributo route do controlador :  [Route ("api / [controller]"]]
     //Substitua [controller] pelo nome do controlador, que é o nome da classe do controlador menos o sufixo
