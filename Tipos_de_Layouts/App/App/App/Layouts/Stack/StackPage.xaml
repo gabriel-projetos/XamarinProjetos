@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App.Layouts.Stack.StackPage">
+    <ContentPage.Content>
+        <StackLayout Margin="2">
+            <Label Text="Margin='Esquerda, Cima, Direita, Baixo'" HorizontalOptions="Center"></Label>
+            <StackLayout Spacing="3" Margin="10,10,10,10" Padding="30" BackgroundColor="Red"  Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <BoxView BackgroundColor="Green" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                <BoxView BackgroundColor="Blue" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+            </StackLayout>
+            <StackLayout Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <BoxView BackgroundColor="Red" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+                <BoxView BackgroundColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></BoxView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
