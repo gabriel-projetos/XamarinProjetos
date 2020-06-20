@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App.Pages.Xamarin">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <StackLayout BackgroundColor="#FFC926" Padding="30">
+                <Image Source="LogoXF.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout HeightRequest="60" BackgroundColor="#0D1F2D" Padding="30">
+                <Label x:Name="lbXamarin" Text="Xamarin" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="40"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="30" Spacing="22">
+                <RelativeLayout HorizontalOptions="Start">
+                    <BoxView x:Name="boxOne" BackgroundColor="#0D1F2D" HeightRequest="30" WidthRequest="30"/>
+                    <BoxView x:Name="boxTwo" 
+                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=boxOne, Property=X, Factor=1,Constant=12}"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=boxOne, Property=Y, Factor=1,Constant=12}"
+                             BackgroundColor="#25567E" HeightRequest="30" WidthRequest="30"/>
+                    <BoxView BackgroundColor="#4E93CB" HeightRequest="30" WidthRequest="30"
+                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=boxTwo, Property=X, Factor=1,Constant=12}"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=boxTwo, Property=Y, Factor=1,Constant=12}"/>
+                </RelativeLayout>
+                <Label Text="Empresa" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="Black" FontSize="40"></Label>
+            </StackLayout>
+            <StackLayout Padding="30">
+                <Label Text="Comprada pela Microsoft em 2016.&#10;&#10;Desenvolve tecnolgia multiplataforma que funcionam principalmente em Android, IOS e UWP"></Label>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

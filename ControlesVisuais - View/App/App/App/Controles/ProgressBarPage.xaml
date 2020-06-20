@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App.Controles.ProgressBarPage">
+    <ContentPage.Content>
+        <StackLayout Margin="30">
+            <ProgressBar x:Name="progresso" BackgroundColor="Black" Progress="{Binding Mode=TwoWay, Progress}"></ProgressBar>
+            <Button Text="Carregar" Command="{Binding CarregarCommand}"></Button>
+            <Button Text="Descarregar" Command="{Binding DescarregarCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

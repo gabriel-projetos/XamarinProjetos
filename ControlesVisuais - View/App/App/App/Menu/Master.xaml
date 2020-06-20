@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:page="clr-namespace:App"
+             mc:Ignorable="d"
+             x:Class="App.Menu.Master">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <StackLayout>
+                <Button Text="ActivityIndicator" Command="{Binding GoActivityIndicator}"/>
+                <Button Text="ProgressBar" Command="{Binding GoProgressBar}"/>
+                <Button Text="BoxView" Command="{Binding GoBoxView}"/>
+                <Button Text="Label" Command="{Binding GoLabel}"/>
+                <Button Text="Buttons" Command="{Binding GoButton}"/>
+                <Button Text="EntryEditor" Command="{Binding GoEntryEditor}"/>
+                <Button Text="DatePicker" Command="{Binding GoDatePicker}"/>
+                <Button Text="TimePicker" Command="{Binding GoTimePicker}"/>
+
+                <Button Text="Slider / Stepper" Command="{Binding GoSliderStepper}"/>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <page:MainPage></page:MainPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
