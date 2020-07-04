@@ -17,12 +17,15 @@ namespace App.Models
         public ICommand GoEntryEditor { get; set; }
         public ICommand GoDatePicker { get; set; }
         public ICommand GoTimePicker { get; set; }
-
-
-
+        public ICommand GoPickerPage { get; set; }
+        public ICommand GoSearchPage { get; set; }
         public ICommand GoSliderStepper { get; set; }
+        public ICommand GoSwitch { get; set; }
+        public ICommand GoImagePage { get; set; }
+        public ICommand GoListView { get; set; }
+        public ICommand GoTableViewPage { get; set; }
 
-
+        
 
         public MasterModel()
         {
@@ -79,13 +82,46 @@ namespace App.Models
                 MessagingCenter.Send<TimePickerPage>(pageTimePicker, "GoTimePicker");
             });
 
+            var pagePickerPage = new PickerPage();
+            GoPickerPage = new Command(() =>
+            {
+                MessagingCenter.Send<PickerPage>(pagePickerPage, "GoPickerPage");
+            });
 
-
+            var pageSearchBar = new SearchBarPage();
+            GoSearchPage = new Command(() =>
+            {
+                MessagingCenter.Send<SearchBarPage>(pageSearchBar, "GoSearchPage");
+            });
 
             var pageSliderStepper = new SliderStepperPage();
             GoSliderStepper = new Command(() =>
             {
                 MessagingCenter.Send<SliderStepperPage>(pageSliderStepper, "GoSliderStepper");
+            });
+            
+            var pageSwitch = new SwitchPage();
+            GoSwitch = new Command(() =>
+            {
+                MessagingCenter.Send<SwitchPage>(pageSwitch, "GoSwitch");
+            });
+
+            var imagePage = new ImagePage();
+            GoImagePage = new Command(() =>
+            {
+                MessagingCenter.Send<ImagePage>(imagePage, "GoImagePage");
+            });
+
+            var listView = new ListViewPage();
+            GoListView = new Command(() =>
+            {
+                MessagingCenter.Send<ListViewPage>(listView, "GoListView");
+            });
+
+            var tablePage = new TableViewPage();
+            GoTableViewPage = new Command(() =>
+            {
+                MessagingCenter.Send<TableViewPage>(tablePage, "GoTableViewPage");
             });
         }
     }

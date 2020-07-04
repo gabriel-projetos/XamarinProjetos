@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App.Controles.TableViewPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Backup">
+                        <SwitchCell Text="Backup das imagens" On="False"></SwitchCell>
+                        <SwitchCell Text="Backup das conversas" On="False"></SwitchCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="Frequencia do backup semanal"></Label>
+                                <Slider x:Name="Frequencia" BackgroundColor="LightSkyBlue" HorizontalOptions="FillAndExpand" Minimum="0" Maximum="7"/>
+                                <Label x:Name="Resultado" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout>
+                                <Button x:Name="btn"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Segurança">
+                        <SwitchCell Text="Senhas Criptografas" On="True" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mod="clr-namespace:App.Models"
+             mc:Ignorable="d"
+             x:Class="App.Controles.ListViewPage">
+    <!--Instancia uma classe modelo, e criando uma lista dela via XAML-->
+    <!--ItemsSource = Fonte de dados-->
+    <!--Como será mostrado a fonte de dados para o usuário-->
+    <!--ViewCell = Permite colocar os elementos em qualquer Lugar, customizar a apresentação dos dados-->
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type mod:Pessoa}">
+                        <mod:Pessoa Nome="João Pessoa" Idade="18"></mod:Pessoa>
+                        <mod:Pessoa Nome="Gabriel Ribeiro" Idade="21"></mod:Pessoa>
+                        <mod:Pessoa Nome="Fernanda" Idade="23"></mod:Pessoa>
+                        <mod:Pessoa Nome="Gabrielle" Idade="30"></mod:Pessoa>
+                        <mod:Pessoa Nome="Lara" Idade="18"></mod:Pessoa>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Nome}"></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding Idade}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="10" Color="Black" />
+
+            <ListView x:Name="ListaPessoas">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="10" Orientation="Horizontal">
+                                <Label Text="{Binding Nome}"></Label>
+                                <Label Text=" - "></Label>
+                                <Label Text="{Binding Idade}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

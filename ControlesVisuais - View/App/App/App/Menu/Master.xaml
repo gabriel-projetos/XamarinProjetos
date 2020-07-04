@@ -8,18 +8,26 @@
              x:Class="App.Menu.Master">
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <StackLayout>
-                <Button Text="ActivityIndicator" Command="{Binding GoActivityIndicator}"/>
-                <Button Text="ProgressBar" Command="{Binding GoProgressBar}"/>
-                <Button Text="BoxView" Command="{Binding GoBoxView}"/>
-                <Button Text="Label" Command="{Binding GoLabel}"/>
-                <Button Text="Buttons" Command="{Binding GoButton}"/>
-                <Button Text="EntryEditor" Command="{Binding GoEntryEditor}"/>
-                <Button Text="DatePicker" Command="{Binding GoDatePicker}"/>
-                <Button Text="TimePicker" Command="{Binding GoTimePicker}"/>
-
-                <Button Text="Slider / Stepper" Command="{Binding GoSliderStepper}"/>
-            </StackLayout>
+            <ScrollView Margin="10">
+                <StackLayout>
+                    <Button Text="ActivityIndicator" Command="{Binding GoActivityIndicator}"/>
+                    <Button Text="ProgressBar" Command="{Binding GoProgressBar}"/>
+                    <Button Text="BoxView" Command="{Binding GoBoxView}"/>
+                    <Button Text="Label" Command="{Binding GoLabel}"/>
+                    <Button Text="Buttons" Command="{Binding GoButton}"/>
+                    <Button Text="EntryEditor" Command="{Binding GoEntryEditor}"/>
+                    <Button Text="DatePicker" Command="{Binding GoDatePicker}"/>
+                    <Button Text="TimePicker" Command="{Binding GoTimePicker}"/>
+                    <Button Text="PickerPage" Command="{Binding GoPickerPage}"/>
+                    <Button Text="SearchBarPage" Command="{Binding GoSearchPage}"/>
+                    <Button Text="Slider / Stepper" Command="{Binding GoSliderStepper}"/>
+                    <Button Text="Switch" Command="{Binding GoSwitch}"/>
+                    <Button Text="Image" Command="{Binding GoImagePage}"/>
+                    <Button Text="ListView" Command="{Binding GoListView}"/>
+                    <Button Text="TableView" Command="{Binding GoTableViewPage}"/>
+                
+                </StackLayout>
+            </ScrollView>
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>

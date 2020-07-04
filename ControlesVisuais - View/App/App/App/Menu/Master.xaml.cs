@@ -94,11 +94,19 @@ namespace App.Menu
                 IsPresented = false;
             });
 
+            MessagingCenter.Subscribe<PickerPage>(this, "GoPickerPage", (msg) =>
+            {
+                Detail = new PickerPage();
+                //Esconder a master
+                IsPresented = false;
+            });
 
-
-
-
-
+            MessagingCenter.Subscribe<SearchBarPage>(this, "GoSearchPage", (msg) =>
+            {
+                Detail = new SearchBarPage();
+                //Esconder a master
+                IsPresented = false;
+            });
 
             MessagingCenter.Subscribe<SliderStepperPage>(this, "GoSliderStepper", (msg) =>
             {
@@ -106,8 +114,36 @@ namespace App.Menu
                 //Esconder a master
                 IsPresented = false;
             });
-        }
 
+            MessagingCenter.Subscribe<SwitchPage>(this, "GoSwitch", (msg) =>
+            {
+                Detail = new SwitchPage();
+                //Esconder a master
+                IsPresented = false;
+            });
+
+            MessagingCenter.Subscribe<ImagePage>(this, "GoImagePage", (msg) =>
+            {
+                Detail = new ImagePage();
+                //Esconder a master
+                IsPresented = false;
+            });
+
+            MessagingCenter.Subscribe<ListViewPage>(this, "GoListView", (msg) =>
+            {
+                Detail = new ListViewPage();
+                //Esconder a master
+                IsPresented = false;
+            });
+
+            MessagingCenter.Subscribe<TableViewPage>(this, "GoTableViewPage", (msg) =>
+            {
+                Detail = new TableViewPage();
+                //Esconder a master
+                IsPresented = false;
+            });
+        }
+        
         private void CancelarMensagens()
         {
             MessagingCenter.Unsubscribe<ActivityIndicatorPage>(this, "GoActivity");
@@ -118,8 +154,13 @@ namespace App.Menu
             MessagingCenter.Unsubscribe<EntryEditorPage>(this, "GoEntryEditor");
             MessagingCenter.Unsubscribe<DatePickerPage>(this, "GoDatePicker");
             MessagingCenter.Unsubscribe<DatePickerPage>(this, "GoTimePicker");
-
+            MessagingCenter.Unsubscribe<PickerPage>(this, "GoPicker");
+            MessagingCenter.Unsubscribe<SearchBarPage>(this, "GoSearchPage");
             MessagingCenter.Unsubscribe<SliderStepperPage>(this, "GoSliderStepper");
+            MessagingCenter.Unsubscribe<SwitchPage>(this, "GoSwitch");
+            MessagingCenter.Unsubscribe<SwitchPage>(this, "GoImagePage");
+            MessagingCenter.Unsubscribe<ListViewPage>(this, "GoListView");
+            MessagingCenter.Unsubscribe<TableViewPage>(this, "GoTableViewPage");
         }
     }
 }
