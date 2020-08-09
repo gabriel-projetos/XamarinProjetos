@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:template="clr-namespace:App1"
+             mc:Ignorable="d"
+             x:Class="App1.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <template:SeletorTemplate x:Key="SelectorPessoa"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <StackLayout>
+        <!-- Place new controls here -->
+
+        <!--GroupDisplayBinding="{Binding Titulo}" GroupShortNameBinding="{Binding TituloCurto}"-->
+        <ListView x:Name="ListaFuncionarios" IsGroupingEnabled="True" ItemTemplate="{StaticResource Key=SelectorPessoa}" >
+            <ListView.Header>
+                <Label Text="Header" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand" />
+            </ListView.Header>
+
+            <ListView.Footer>
+                <Label Text="Footer" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand" />
+            </ListView.Footer>
+
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="15,0,0,0">
+                            <Label Text="{Binding Titulo}"></Label>
+                            <Label Text="{Binding Descricao}" TextColor="LightGray"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

@@ -142,6 +142,13 @@ namespace App.Menu
                 //Esconder a master
                 IsPresented = false;
             });
+
+            MessagingCenter.Subscribe<WebViewPage>(this, "GoWebView", (msg) =>
+            {
+                Detail = new WebViewPage();
+                //Esconder a master
+                IsPresented = false;
+            });
         }
         
         private void CancelarMensagens()
@@ -161,6 +168,7 @@ namespace App.Menu
             MessagingCenter.Unsubscribe<SwitchPage>(this, "GoImagePage");
             MessagingCenter.Unsubscribe<ListViewPage>(this, "GoListView");
             MessagingCenter.Unsubscribe<TableViewPage>(this, "GoTableViewPage");
+            MessagingCenter.Unsubscribe<WebViewPage>(this, "GoWebView");
         }
     }
 }

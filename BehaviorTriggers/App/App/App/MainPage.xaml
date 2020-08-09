@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behavior="clr-namespace:App.Lib"
+             mc:Ignorable="d"
+             x:Class="App.MainPage">
+
+    <StackLayout> 
+        <Entry x:Name="txtNome" Placeholder="Digite o seu nome" Text="">
+            <Entry.Behaviors>
+                <behavior:MaiusculoBehavior/>
+            </Entry.Behaviors>
+            <Entry.Triggers>
+                <!--Quando o focus estiver True-->
+                <!--Trigger com base em propriedade-->
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="LightGray"/>
+                    <Setter Property="TextColor" Value="Black"/>
+                </Trigger>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                    <Setter Property="BackgroundColor" Value="LightSkyBlue"/>
+                    <Setter Property="TextColor" Value="Black"/>
+                </Trigger>
+            </Entry.Triggers>
+        </Entry>
+        
+        <Entry x:Name="txtEmail" Placeholder="Digite seu e-mail">
+            <Entry.Triggers>
+                <!--Trigger baseada em Eventos-->
+                <EventTrigger Event="TextChanged">
+                    <behavior:EmailValidoTrigger></behavior:EmailValidoTrigger>
+                </EventTrigger>
+            </Entry.Triggers>
+        </Entry>
+        
+        
+        <Button Text="Enviar">
+            <Button.Triggers>
+                <!--Trigger com base em dados-->
+                <!--Se o length do entry for 0 o botão ficara desabilitado-->
+                <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference txtNome}, Path=Text.Length}" Value="0">
+                    <Setter Property="TextColor" Value="White"/>
+                    <Setter Property="BackgroundColor" Value="LightSkyBlue"/>
+                    <Setter Property="IsEnabled" Value="False"/> 
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+    </StackLayout>
+
+</ContentPage>

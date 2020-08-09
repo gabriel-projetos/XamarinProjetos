@@ -7,9 +7,20 @@
              x:Class="App.Controles.WebViewPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Entry x:Name="EnderecoSite" Placeholder="Pesquisa"/>
+                <Button x:Name="GoPagina" Text="OK"/>
+                <Button Text="Próximo" x:Name="Proximo"/>
+                <Button x:Name="Voltar" Text="Voltar"/>
+                
+            </StackLayout>
+            <WebView 
+                
+                
+                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                
+            </WebView>
+            <Label x:Name="lblStatus"
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

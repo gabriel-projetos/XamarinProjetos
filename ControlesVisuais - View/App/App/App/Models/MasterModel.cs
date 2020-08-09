@@ -24,8 +24,10 @@ namespace App.Models
         public ICommand GoImagePage { get; set; }
         public ICommand GoListView { get; set; }
         public ICommand GoTableViewPage { get; set; }
-
+        public ICommand GoWebView { get; set; }
         
+
+
 
         public MasterModel()
         {
@@ -122,6 +124,12 @@ namespace App.Models
             GoTableViewPage = new Command(() =>
             {
                 MessagingCenter.Send<TableViewPage>(tablePage, "GoTableViewPage");
+            });
+
+            var webView = new WebViewPage();
+            GoWebView = new Command(() =>
+            {
+                MessagingCenter.Send<WebViewPage>(webView, "GoWebView");
             });
         }
     }

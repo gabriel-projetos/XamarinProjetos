@@ -25,7 +25,7 @@
                     <Button Text="Image" Command="{Binding GoImagePage}"/>
                     <Button Text="ListView" Command="{Binding GoListView}"/>
                     <Button Text="TableView" Command="{Binding GoTableViewPage}"/>
-                
+                    <Button Text="WebView" Command="{Binding GoWebView}"/>
                 </StackLayout>
             </ScrollView>
         </ContentPage>
