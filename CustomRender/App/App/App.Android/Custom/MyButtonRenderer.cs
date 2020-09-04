@@ -31,6 +31,7 @@ namespace App.Droid.Custom
             if(Control != null)
             {
                 Control.SetBackgroundResource(Resource.Drawable.button_round);
+                
                 //Control.SetBackgroundColor(Android.Graphics.Color.LightSkyBlue);
             }
         }

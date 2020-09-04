@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="App.Layouts.Scroll.ScrollPage">
     <ContentPage.Content>
-        <ScrollView Orientation="Neither" HorizontalScrollBarVisibility="t">
+        <ScrollView Orientation="Neither" HorizontalScrollBarVisibility="Default">
             <StackLayout HeightRequest="1000" WidthRequest="1000" BackgroundColor="#CCCCCC">
                 <Label Text="Welcome to Xamarin.Forms!"
                     VerticalOptions="CenterAndExpand" 

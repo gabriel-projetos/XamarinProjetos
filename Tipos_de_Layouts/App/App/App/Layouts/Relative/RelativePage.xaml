@@ -6,15 +6,40 @@
              mc:Ignorable="d"
              x:Class="App.Layouts.Relative.RelativePage">
     <ContentPage.Content>
+        <!--Só utiliza o relative layout, para construção de expressões, de posicionamento relativo a alguma coisa, referente a uma informação em outro elemento-->
+        
+        <!--Type: A forma de se relacionar a outros elemtnso
+        RelativeToParent = Relativo ao Pai
+        ElementName = Quando quer indicar um elemento na tela pelo x:name
+        RelativeToView = Quaalquer elemento visual na tela é chamado de view
+        
+        
+        Property: Qual propriedade queremos
+        
+        
+        Fator: número de 0 a 1, a % que queremos da Property
+        
+        
+        Constante: Impacta no Factor, adiciona ou subtrai do Factor, no exemplo removendo -50 pixels da property Width-->
         <RelativeLayout>
+            
             <BoxView RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=0.5,Constant=-50 }" BackgroundColor="Blue" />
             
-            <BoxView BackgroundColor="Red" Margin="100" WidthRequest="100" HeightRequest="100" x:Name="Vermelho"/>
             
             <BoxView BackgroundColor="Green"
-                     WidthRequest="100" HeightRequest="100"
+                     WidthRequest="100" 
+                     HeightRequest="100"
                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Vermelho, Property=Y, Factor=1,Constant=20}"
                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Vermelho, Property=X, Factor=1, Constant=20 }"/>
+            
+            
+            
+            <BoxView BackgroundColor="Red" 
+                     Margin="100" 
+                     WidthRequest="100"
+                     HeightRequest="100" 
+                     x:Name="Vermelho"/>
+            
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

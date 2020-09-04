@@ -1,7 +1,9 @@
-﻿using System;
+﻿using LinqToAwait;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -22,6 +24,26 @@ namespace App
 
 
             Container.Children.Add(MyButton);
+
+            
+
+          
+        }
+
+        
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            List<Pessoa> inputs = new List<Pessoa>()
+            {
+                new Pessoa { Idade = "5", Nome = 5},
+                new Pessoa { Idade = "10", Nome = 3}
+            };
+
+            IEnumerable<string> results = await inputs.AsAsync()
+                .FirstAsync(async data => await data.Idade == "5");
         }
     }
 }

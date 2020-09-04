@@ -4,13 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:controls="clr-namespace:App.Control"
              x:Class="App.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label Text="Xamarin">
+            
+        </Label>
+
+        <controls:MyControl  Titulo="Titulo x1" TituloCor="Blue" Imagem="controle.png"/>
+        <controls:MyControl  Titulo="Titulo x2" TituloCor="Red" Imagem="logo2.png"/>
+        <controls:MyControl  Titulo="Titulo x3" TituloCor="Yellow" Imagem="logo3.png"/>
+        <controls:MyControl TituloCor="Green" Tapped="MyControl_Tapped"/>
     </StackLayout>
 
 </ContentPage>
