@@ -7,15 +7,12 @@
              xmlns:controls="clr-namespace:App.Control"
              x:Class="App.MainPage">
 
-    <StackLayout>
-        <Label Text="Xamarin">
-            
-        </Label>
-
-        <controls:MyControl  Titulo="Titulo x1" TituloCor="Blue" Imagem="controle.png"/>
+    <StackLayout HorizontalOptions="Center">
+        <controls:MyControl  Titulo="Titulo x1" TituloCor="Blue" Imagem="controle.png"
+                              Tapped="MyControl_Tapped"/>
         <controls:MyControl  Titulo="Titulo x2" TituloCor="Red" Imagem="logo2.png"/>
         <controls:MyControl  Titulo="Titulo x3" TituloCor="Yellow" Imagem="logo3.png"/>
-        <controls:MyControl TituloCor="Green" Tapped="MyControl_Tapped"/>
+        <controls:MyControl TituloCor="Green"/>
     </StackLayout>
 
 </ContentPage>

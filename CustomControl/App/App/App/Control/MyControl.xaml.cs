@@ -48,12 +48,13 @@ namespace App.Control
             //bindable é a classe myControl
             var myControl = (MyControl)bindable;
 
-            //acessando as propriedades do xaml
+            //acessando as propriedades do xaml que foram declaradas no x:name
             myControl.titulo.Text = newValue.ToString();
         }
 
-        //Devemos fazer referencia ao Bindable
-        public string Titulo 
+        //Devemos fazer referencia ao Bindable com o GetValue e SetValue já que estamos utilizando bindable
+        //Propriedade que sera chamada no xaml
+        public string Titulo
         { 
             get
             {
@@ -62,6 +63,7 @@ namespace App.Control
             }
             set
             {
+                //setar para esse titulo o value
                 SetValue(TituloProperty, value);
             }
         }
