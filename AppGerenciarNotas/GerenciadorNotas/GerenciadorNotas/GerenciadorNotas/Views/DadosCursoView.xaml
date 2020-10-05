@@ -6,22 +6,52 @@
              mc:Ignorable="d"
              x:Class="GerenciadorNotas.Views.DadosCursoView"
              Title="Dados do Curso">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="LightSkyBlue"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="HeightRequest" Value="1"/>
+            <Setter Property="Margin" Value="-10,0,-10,0"/>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <TableView Intent="Data" Margin="15">
-                <TableRoot>
-                    <TableSection Title="Dados do Curso">
-                        <EntryCell Label="Nome: " Text="Mylene Caldeira"
-                                   IsEnabled="False"></EntryCell>
-                        <EntryCell Label="Curso: " Text="Farmácia"
-                                   IsEnabled="False"></EntryCell>
-                        <EntryCell Label="Unidade: " Text="Tatuapé"
-                                   IsEnabled="False"></EntryCell>
-                        <EntryCell Label="Turma: " Text="CC2P33"
-                                   IsEnabled="False"></EntryCell>
-                    </TableSection>
-                </TableRoot>
-            </TableView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="0,5" BackgroundColor="White">
+                <Label Text="Dados do Curso" TextColor="DeepSkyBlue" HorizontalOptions="Center"/>
+                <BoxView Color="Black" HeightRequest="0.3"/>
+
+                <StackLayout Spacing="3" Margin="5" Padding="5">
+                    <Label Text="Curso: &#10;Ciência da Computação"/>
+                    <BoxView />
+
+                    <Label Text="Unidade: &#10;TATUAPE"/>
+                    <BoxView />
+
+                    <Label Text="Turma: &#10;CC4P33"/>
+                    <BoxView />
+
+                    <Label Text="Série: &#10;04"/>
+                    <BoxView />
+
+                    <Label Text="Vestibular: &#10;19/1"/>
+                    <BoxView />
+
+                    <Label Text="Forma de Ingresso: &#10;CONCURSO VESTIBULAR"/>
+                    <BoxView />
+
+                    <Label Text="Data de Matrícula: &#10;29/06/20"/>
+                    <BoxView />
+
+                    <Label Text="Situação: &#10;Ativo"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

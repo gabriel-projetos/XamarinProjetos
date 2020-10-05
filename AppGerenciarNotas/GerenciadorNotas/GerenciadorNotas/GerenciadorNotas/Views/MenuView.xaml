@@ -6,40 +6,90 @@
              mc:Ignorable="d"
              Title="Menu de Seleção"
              x:Class="GerenciadorNotas.Views.MenuView">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid Margin="12">
-            <Grid.ColumnDefinitions>
-                <!--Propriedades: pixels, Auto: Assume o tamanho do conteudo, * : Expande o maximo que der -->
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <FlexLayout Direction="Column" Margin="5">
+            <Label Text="GRADUAÇÃO PRESENCIAL" FlexLayout.AlignSelf="Center" Margin="0,0,0,10"/>
+            <Grid FlexLayout.Grow="1">
 
-            <Grid.RowDefinitions>
-                <!--Propriedades: pixels, Auto: Assume o tamanho do conteudo, * : Expande o maximo que der -->
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                
-            </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <!--Propriedades: pixels, Auto: Assume o tamanho do conteudo, * : Expande o maximo que der -->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-            <Button x:Name="buttonCadastro" Text="Meu Cadastro" Grid.Column="0" Grid.Row="0" BackgroundColor="LightBlue"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Command="{Binding MeuCadastroCommand}"/>
-            
-            <Button Text="Dados do Curso" Grid.Column="0" Grid.Row="1" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                    Command="{Binding DadosCursoCommand}"/>
-            
-            <Button Text="Notas e Faltas Bimestrais" Grid.Column="1" Grid.Row="1" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                    Command="{Binding NotasFaltasCommand}"/>
-            
-            <Button Text="Integralização Curricular" Grid.Column="1" Grid.Row="0" BackgroundColor="LightBlue" HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                    Command="{Binding IntegralizacaoCurricularCommand}"/>
-        </Grid>
+                    <Grid.RowDefinitions>
+                        <!--Propriedades: pixels, Auto: Assume o tamanho do conteudo, * : Expande o maximo que der -->
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+                    <FlexLayout Grid.Column="0" Grid.Row="0"   
+                                BackgroundColor="LightBlue"
+                                JustifyContent="End"
+                                Direction="Column">
+                        <Image Source="meu_cadastro.png"/>
+                        <Label Margin="0,0,0,10"
+                               FlexLayout.AlignSelf="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="Meu &#10;Cadastro" />
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MeuCadastroCommand}"/>
+                        </FlexLayout.GestureRecognizers>
+                    </FlexLayout>
+
+                    <FlexLayout Grid.Column="1" Grid.Row="0"   
+                                BackgroundColor="LightBlue"
+                                JustifyContent="End"
+                                Direction="Column">
+                        <Image Source="dados_curso.png"/>
+                        <Label Margin="0,0,0,10"
+                               FlexLayout.AlignSelf="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="Dados &#10;do Curso" />
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DadosCursoCommand}"/>
+                        </FlexLayout.GestureRecognizers>
+                    </FlexLayout>
+
+                    <FlexLayout Grid.Column="0" Grid.Row="1"   
+                                BackgroundColor="LightBlue"
+                                JustifyContent="End"
+                                Direction="Column">
+                        <Image Source="notas_faltas.png"/>
+                        <Label Margin="0,0,0,10"
+                               FlexLayout.AlignSelf="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="Notas e &#10;Faltas Bimestrais" />
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NotasFaltasCommand}"/>
+                        </FlexLayout.GestureRecognizers>
+                    </FlexLayout>
+
+                    <FlexLayout Grid.Column="1" Grid.Row="1"   
+                                BackgroundColor="LightBlue"
+                                JustifyContent="End"
+                                Direction="Column">
+                        <Image Source="medias_exames.png"/>
+                        <Label Margin="0,0,0,10"
+                               FlexLayout.AlignSelf="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="Integralização &#10;Curricular" />
+                        <FlexLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IntegralizacaoCurricularCommand}"/>
+                        </FlexLayout.GestureRecognizers>
+                    </FlexLayout>
+                </Grid>
+            </Grid>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -44,7 +44,15 @@ namespace GerenciadorNotas.ViewModel
 			EntrarCommand = new Command(() =>
 			{
 				//Enviando uma mensagem contendo um usuario, para depois verificar a autenticação
-				MessagingCenter.Send<Aluno>(new Aluno(), "SucessoLogin");
+				if(ra == "F02AAD1" && senha == "3482")
+                {
+					MessagingCenter.Send<Aluno>(new Aluno(), "SucessoLogin");
+                }
+                else
+                {
+					App.Current.MainPage.DisplayAlert("Falha Login.", "RA ou Senha inválidos, por favor tente novamente.", "OK");
+				};
+
 			}, () =>
 			{
 				//Action do botão que informa se ele pode ser executado ou não,	por padrão é True

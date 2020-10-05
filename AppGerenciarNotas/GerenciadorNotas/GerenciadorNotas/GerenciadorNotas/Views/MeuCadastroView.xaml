@@ -6,12 +6,92 @@
              mc:Ignorable="d"
              Title="Meu Cadastro"
              x:Class="GerenciadorNotas.Views.MeuCadastroView">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="LightSkyBlue"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="HeightRequest" Value="1"/>
+            <Setter Property="Margin" Value="-10,0,-10,0"/>
+        </Style>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text=""
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
-            <Button Text="Teste"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="0,5" BackgroundColor="White">
+                <Label Text="Dados Pessoais" TextColor="DeepSkyBlue" HorizontalOptions="Center"/>
+                <BoxView Color="Black" HeightRequest="0.3"/>
+
+                <StackLayout Spacing="3" Margin="5" Padding="5">
+                    <Label Text="Nome: &#10;Gabriel Ribeiro Rossi"/>
+                    <BoxView />
+
+                    <Label Text="RG: &#10;387..."/>
+                    <BoxView />
+
+                    <Label Text="CPF: &#10;441.152..."/>
+                    <BoxView />
+
+                    <Label Text="Título de Eleitor: &#10;705154..."/>
+                    <BoxView />
+
+                    <Label Text="Certificado de Reservista: &#10;74874547854..."/>
+                    <BoxView />
+
+                    <Label Text="Data de Nascimento: &#10;28/02/1996"/>
+                    <BoxView />
+
+                    <Label Text="Sexo: &#10;Masculino"/>
+                    <BoxView />
+
+                    <Label Text="Naturalidade: &#10;São Paulo"/>
+                    <BoxView />
+
+                    <!--passar para caps com o textransofmr-->
+                    <Label Text="Mãe: &#10;Cecilia Ribeiro Rossi" />
+                </StackLayout>
+
+                <Label Text="Informações de Contato" TextColor="DeepSkyBlue"
+                   HorizontalOptions="Center"/>
+                <BoxView Color="Black" HeightRequest="0.3"/>
+
+                <StackLayout Spacing="3" Margin="5" Padding="5">
+                    <Label Text="E-mail: &#10;gabriel.rossi96@hotmail.com"/>
+                    <BoxView />
+
+                    <Label Text="Telefone Residencial: &#10;(11) 2216-0962"/>
+                    <BoxView />
+
+                    <Label Text="Telefone Celular: &#10;(11) 9 6348-5531"/>
+                    <BoxView />
+                </StackLayout>
+
+                <Label Text="Informações de Endereço" TextColor="DeepSkyBlue"
+                   HorizontalOptions="Center"/>
+                <BoxView Color="Black" HeightRequest="0.3"/>
+
+                <StackLayout Spacing="3" Margin="5" Padding="5">
+                    <Label Text="Rua: &#10;Rua dos financeiros 424 B4"/>
+                    <BoxView />
+
+                    <Label Text="Bairro: &#10;Vila Bancaria"/>
+                    <BoxView />
+
+                    <Label Text="Cidade: &#10;São Paulo"/>
+                    <BoxView />
+
+                    <Label Text="Estado: &#10;São Paulo"/>
+                    <BoxView />
+
+                    <Label Text="CEP: &#10;03918-010"/>
+                    <BoxView />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

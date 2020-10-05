@@ -13,7 +13,8 @@ namespace GerenciadorNotas
             InitializeComponent();
 
             //Aqui determina qual página é exibida primeiro quando inicia o app
-            MainPage = new LoginView(); 
+            //MainPage = new LoginView(); 
+            MainPage = new NavigationPage(new MenuView());
         }
 
         protected override void OnStart()
