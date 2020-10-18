@@ -22,7 +22,9 @@
 	<style name="MyTheme" parent="MyTheme.Base">
 	</style>
 
+	<!--tema-->
 	<style name="MainTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
+		<!--Referenciando o arquivo que contem a imagem da splash-->
 		<item name="android:windowBackground">@drawable/splashscreen</item>
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowFullscreen">true</item>

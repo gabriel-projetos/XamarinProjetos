@@ -11,21 +11,21 @@ namespace GerenciadorNotas.ViewModel
     {
         public string Curso
         {
-            get { return this.usuario.curso; }
-            set { this.usuario.curso = value; }
+            get { return this.usuario.Curso; }
+            set { this.usuario.Curso = value; }
         }
 
         public string Unidade
         {
-            get { return this.usuario.unidade; }
-            set { this.usuario.unidade = value; }
+            get { return this.usuario.Unidade; }
+            set { this.usuario.Unidade = value; }
 
         }
 
         public string Turma
         {
-            get { return this.usuario.turma; }
-            set { this.usuario.turma = value; }
+            get { return this.usuario.Turma; }
+            set { this.usuario.Turma = value; }
         }
         private readonly Aluno usuario;
 

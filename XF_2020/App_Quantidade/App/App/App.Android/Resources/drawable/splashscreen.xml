@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 	<item>
+		<!--Cor de fundo da splah-->
 		<color android:color="@color/ic_launcher_background"/>
 	</item>
 	<item>
+		<!--imagem-->
 		<bitmap
 			android:src="@drawable/logo"
 			android:tileMode="disabled"

@@ -6,6 +6,7 @@ namespace GerenciadorNotas.Dominio
 {
     public class Aluno
     {
+        public string RA { get; set; }
         public int AlunoId { get; set; }
         public string Nome { get; set; }
         public string RG { get; set; }

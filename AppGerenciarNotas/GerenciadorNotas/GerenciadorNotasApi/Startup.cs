@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GerenciadorNotas.Repositorio;
+using GerenciadorNotas.Repositorio.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,10 @@ namespace GerenciadorNotasApi
                     .AddNewtonsoftJson(
                         opt => opt.SerializerSettings.ReferenceLoopHandling =
                             Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            //Serviço(Interface) e Implementação
+            //Dado a necessidade de alguem que implementou a interface, mande uma classe EFCoreRepositorio
+            services.AddScoped<IEFCoreRepositorio, EFCoreRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

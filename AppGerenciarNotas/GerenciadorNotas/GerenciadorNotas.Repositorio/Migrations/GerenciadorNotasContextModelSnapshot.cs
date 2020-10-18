@@ -62,6 +62,9 @@ namespace GerenciadorNotas.Repositorio.Migrations
                     b.Property<string>("NomeMae")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RA")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RG")
                         .HasColumnType("nvarchar(max)");
 

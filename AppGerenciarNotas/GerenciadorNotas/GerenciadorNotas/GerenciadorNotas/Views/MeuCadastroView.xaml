@@ -53,7 +53,7 @@
                     <BoxView />
 
                     <!--passar para caps com o textransofmr-->
-                    <Label Text="Mãe: &#10;Cecilia Ribeiro Rossi" />
+                    <Label Text="Mãe: &#10;Cecilia Ribeiro Rossi"/>
                 </StackLayout>
 
                 <Label Text="Informações de Contato" TextColor="DeepSkyBlue"
