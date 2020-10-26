@@ -38,10 +38,13 @@
                                 JustifyContent="End"
                                 Direction="Column">
                         <Image Source="meu_cadastro.png"/>
+                        
                         <Label Margin="0,0,0,10"
                                FlexLayout.AlignSelf="Center"
                                HorizontalTextAlignment="Center"
                                Text="Meu &#10;Cadastro" />
+                        
+                        
                         <FlexLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding MeuCadastroCommand}"/>
                         </FlexLayout.GestureRecognizers>

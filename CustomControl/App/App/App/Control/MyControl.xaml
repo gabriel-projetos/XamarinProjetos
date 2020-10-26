@@ -9,15 +9,24 @@
       <StackLayout>
             <Image x:Name="imagem" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100"/>
             <Label x:Name="titulo" Text="Meu Texto"></Label>
+            <Button Text="Teste" Command="">
+            </Button>
 
-
-
-          <!--Quando alguem clicar no stack-->
-            <StackLayout.GestureRecognizers>
+            <StackLayout>
+                <Label Text="TESTE"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped">
+                    
+                    </TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+          
+            <!--Quando alguem clicar no stack-->
+            <!--<StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
                     
                 </TapGestureRecognizer>
-            </StackLayout.GestureRecognizers>
+            </StackLayout.GestureRecognizers>-->
       </StackLayout>
   </ContentView.Content>
 </ContentView>

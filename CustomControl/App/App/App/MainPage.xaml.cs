@@ -18,10 +18,15 @@ namespace App
             InitializeComponent();
         }
 
-        //Evento criado no MyControl
         private void MyControl_Tapped(object sender, EventArgs e)
         {
             DisplayAlert("Eu sou um evento", "Fui executado!", "Ok");
         }
+
+        //Evento criado no MyControl
+        //private void MyControl_Tapped(object sender, EventArgs e)
+        //{
+        //    DisplayAlert("Eu sou um evento", "Fui executado!", "Ok");
+        //}
     }
 }

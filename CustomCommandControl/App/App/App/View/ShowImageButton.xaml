@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App.Controls"
+             x:Class="App.View.ShowImageButton">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center" >
+            <local:ImageButton VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               ButtonText="Clicked"
+                               Source="camera.png"
+                               Clicked="ImageButton_Clicked"
+                               IsVisibleBotao="True"/>
+
+            <local:ImageButton VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               ButtonText="Command"
+                               Source="camera.png"
+                               IsVisibleBotao="True"
+                               CommandParameter="1"
+                               Command="{Binding MyCommand}"/>
+            <Label Text="{Binding StatusMessage}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

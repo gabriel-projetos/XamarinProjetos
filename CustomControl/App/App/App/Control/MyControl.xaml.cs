@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -65,6 +65,31 @@ namespace App.Control
                 SetValue(TituloProperty, value);
             }
         }
+        #endregion
+
+        #region testeCommand
+
+        public static readonly BindableProperty CommandProperty =
+        BindableProperty.Create(propertyName: "TesteCommands", typeof(ICommand), typeof(MyControl), null);
+        public ICommand TesteCommand
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        // Helper method for invoking commands safely
+        public static void Execute(ICommand command)
+        {
+            if (command == null) return;
+            if (command.CanExecute(null))
+            {
+                command.Execute(null);
+            }
+        }
+
+
+        public Command OnTap => new Command(() => Execute(TesteCommand));
+
         #endregion
 
         #region TituloCor
@@ -170,13 +195,15 @@ namespace App.Control
             InitializeComponent();
         }
 
+
+
         //Quando clicar no stack
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             //Acionar os ventos vinculados ao Tapped
 
             //Se existe alguem informação vinculada ao evento
-            if(Tapped != null)
+            if (Tapped != null)
             {
                 Tapped(sender, e);
             }

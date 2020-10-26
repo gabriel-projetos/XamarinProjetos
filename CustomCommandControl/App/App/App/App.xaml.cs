@@ -1,9 +1,10 @@
-﻿using AppProdutos.Views;
+﻿using App.Controls;
+using App.View;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppProdutos
+namespace App
 {
     public partial class App : Application
     {
@@ -11,7 +12,8 @@ namespace AppProdutos
         {
             InitializeComponent();
 
-            MainPage = new ProdutosView();
+            //MainPage = new ShowImageButton();
+            MainPage = new NavigationPage(new HomePage());
         }
 
         protected override void OnStart()

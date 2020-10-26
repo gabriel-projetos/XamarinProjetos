@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App.Controls"
+             x:Class="App.View.ShowHeaderPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <local:HeaderPage CommandBack="{Binding BackButton}"
+                              CommandAux="{Binding MenuAuxiliar}"
+                              >
+            </local:HeaderPage>
+            <!--CommandParameter="2"-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

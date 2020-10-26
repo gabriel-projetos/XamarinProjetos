@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppProdutos.Views.ProdutosView">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+
+            <Grid Margin="30"
+                  Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <CarouselView ItemsSource="{Binding Produtos}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <BoxView BackgroundColor="Black" HeightRequest="2"/>
+                                <Label Text="Produto"
+                                        TextColor="Black"
+                                        Grid.Row="0"/>
+                                <StackLayout Grid.Row="1">
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Nome: " VerticalTextAlignment="Center"/>
+                                        <Entry Placeholder="Nome"
+                                               HorizontalOptions="FillAndExpand"
+                                               Text="{Binding Nome}"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Preço: " VerticalTextAlignment="Center"/>
+                                        <Entry Placeholder="Preço"
+                                               Keyboard="Numeric"
+                                               HorizontalOptions="FillAndExpand"
+                                               Text="{Binding Preco}"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Estoque: " VerticalTextAlignment="Center"/>
+                                        <Entry Placeholder="Estoque"
+                                            Keyboard="Numeric"
+                                            HorizontalOptions="FillAndExpand"
+                                               Text="{Binding Estoque}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Orientation="Horizontal"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center">
+                                    <Button Text="Editar" BackgroundColor="DeepSkyBlue"/>
+                                    <Button Text="Criar" BackgroundColor="LightGreen"/>
+                                    <Button Text="Excluir" BackgroundColor="IndianRed"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

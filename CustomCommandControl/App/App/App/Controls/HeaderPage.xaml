@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Controls.HeaderPage" Margin="0" Padding="0"
+             x:Name="content">
+  <ContentView.Content>
+        <Grid ColumnDefinitions="10*, 80*, 10*">
+            <ImageButton x:Name="backButton" Source="back" HeightRequest="40" WidthRequest="40" BackgroundColor="LightSkyBlue"
+                         Command="{Binding CommandBack, Source={x:Reference content}}"/>
+            
+            <Label Text="Folha de Pagamento" Grid.Column="1" BackgroundColor="LightCoral"
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+            <ImageButton x:Name="menuLateral" Source="more" HeightRequest="30" WidthRequest="40" BackgroundColor="LightSkyBlue"
+                         Grid.Column="2"
+                         Command="{Binding CommandAux, Source={x:Reference content}}"/>
+        </Grid>
+  </ContentView.Content>
+</ContentView>
