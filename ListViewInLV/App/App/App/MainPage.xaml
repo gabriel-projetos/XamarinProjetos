@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.MainPage">
+
+    
+    <StackLayout Margin="15">
+        <Label Text="Teste"/>
+        <ListView ItemsSource="{Binding Perguntas}"
+                  x:Name="ListView_Perguntas"
+                  SelectionMode="None"
+                  RowHeight="60"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding numQuestao}"/>
+                                <Label Text=")"/>
+                                <Label Text="{Binding Descricao}"/>
+                            </StackLayout>
+                            <ListView ItemsSource="{Binding Alternativas}" HasUnevenRows="False"
+                                      SelectionMode="None">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Label Text="{Binding DescricaoAlt}"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

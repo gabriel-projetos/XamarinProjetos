@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:template="clr-namespace:App.Views"
+             x:Class="App.Views.QuestionarioView">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="RespCurtaTemplate">
+                <ViewCell>
+                    <StackLayout Margin="0,0,0,15">
+                        <Entry MaxLength="40"  Placeholder="Resp Curta"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="RespLongaTemplate">
+                <ViewCell>
+                    <StackLayout Margin="0,0,0,15">
+                        <Editor MaxLength="200" 
+                                Placeholder="Resp Longa"
+                                AutoSize="TextChanges"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AlternativaTemplate">
+                <ViewCell>
+                    <FlexLayout Direction="Row" Margin="0,15,0,15" 
+                                 AlignItems="Center">
+                        <Label Text="{Binding DescAlternativa}"/>
+                        <CheckBox />
+                    </FlexLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SelecaoTemplate">
+                <ViewCell>
+                    <FlexLayout Direction="Row" Margin="0,15,0,15"
+                                AlignItems="Center">
+                        <Label Text="{Binding DescAlternativa}"/>
+                        <CheckBox />
+                    </FlexLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="NumeroTemplate">
+                <ViewCell>
+                    <StackLayout Margin="0,0,0,15">
+                        <Entry MaxLength="40" Placeholder="Resp Curta"
+                               Keyboard="Numeric"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <template:TemplateSelector x:Key="SelectorPergunta"
+                                       RespCurtaTemplate="{StaticResource RespCurtaTemplate}"
+                                       RespLongaTemplate="{StaticResource RespLongaTemplate}"
+                                       AlternativaTemplate="{StaticResource AlternativaTemplate}"
+                                       SelecaoTemplate="{StaticResource SelecaoTemplate}"
+                                       NumeroTemplate="{StaticResource NumeroTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Place new controls here -->
+
+            <!--GroupDisplayBinding="{Binding Titulo}" GroupShortNameBinding="{Binding TituloCurto}"-->
+            <ListView x:Name="ListaPerguntas" IsGroupingEnabled="True" ItemTemplate="{StaticResource Key=SelectorPergunta}" 
+                      SeparatorColor="Transparent"
+                      SeparatorVisibility="None"
+                      SelectionMode="None"
+                      HasUnevenRows="True" Margin="10">
+                
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <BoxView HeightRequest="2" BackgroundColor="Red"/>
+                                <Label Text="{Binding DescPergunta}" 
+                                       TextColor="Black"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       BackgroundColor="LightSkyBlue"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+            </ListView>
+            <Button Text="Enviar" Clicked="Button_Clicked">
+                <!--<Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                     Binding="{Binding Source={x:Reference ListaPerguntas},
+                                       Path=Text.Length}"
+                     Value="0">
+                        <Setter Property="IsEnabled" Value="False" />
+                        --><!-- multiple Setters elements are allowed --><!--
+                    </DataTrigger>
+                </Button.Triggers>-->
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

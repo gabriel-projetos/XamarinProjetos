@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App.CustomRender"
+             xmlns:behavior="clr-namespace:App"
+             x:Class="App.Views.CustomEntryPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="20" x:Name="layout">
+            <local:ExtendedEntry Placeholder="Name" ErrorText="{Binding Path=User.FirstName.NotValidMessageError}"
+                                     BorderErrorColor="Red"
+                                     Text="{Binding Path=User.FirstName.Name}"
+                                     HeightRequest="40"
+                                     IsBorderErrorVisible="{Binding Path=User.FirstName.IsNotValid}">
+                <local:ExtendedEntry.Behaviors>
+                    <behavior:EmptyEntryValidatorBehavior />
+                </local:ExtendedEntry.Behaviors>
+            </local:ExtendedEntry>
+
+            <local:ExtendedEntry Placeholder="Email" ErrorText="{Binding Path=User.Email.NotValidMessageError}"
+                                     BorderErrorColor="Red"
+                                     Text="{Binding Path=User.Email.Name}"
+                                     HeightRequest="40"
+                                     IsBorderErrorVisible="{Binding Path=User.Email.IsNotValid}">
+                <local:ExtendedEntry.Behaviors>
+                    <behavior:EmptyEntryValidatorBehavior />
+                </local:ExtendedEntry.Behaviors>
+            </local:ExtendedEntry>
+
+            <local:ExtendedEntry Placeholder="Password" ErrorText="{Binding Path=User.Password.NotValidMessageError}"
+                                    BorderErrorColor="Red" IsPassword="true"
+                                     Text="{Binding User.Password.Name}"
+                                     HeightRequest="40"
+                                     IsBorderErrorVisible="{Binding User.Password.IsNotValid, Mode=TwoWay}">
+                <local:ExtendedEntry.Behaviors>
+                    <behavior:EmptyEntryValidatorBehavior />
+                </local:ExtendedEntry.Behaviors>
+            </local:ExtendedEntry>
+
+            <Button Text="Enter" 
+                      Clicked="Button_Clicked"
+                      BackgroundColor="Black"
+                      HorizontalOptions="FillAndExpand"
+                      TextColor="White"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -8,7 +8,7 @@
              x:Class="App1.MainPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <template:SeletorTemplate x:Key="SelectorPessoa"/>
+            <template:SeletorTemplate x:Key="SelectorPessoa" />
         </ResourceDictionary>
     </ContentPage.Resources>
     
