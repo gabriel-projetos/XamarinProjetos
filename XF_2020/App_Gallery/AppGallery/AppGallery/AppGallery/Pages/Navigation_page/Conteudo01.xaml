@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppGallery.Pages.Navigation_page.Conteudo01"
-             Title="Conteúdo 01">
+<ContentPage
+    x:Class="AppGallery.Pages.Navigation_page.Conteudo01"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Conteúdo 01">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Content page 1"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                   BackgroundColor="Red"/>
-            <Button Text="Ir para página 2"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Clicked="AbrirPagina02"/>
+            <Label
+                BackgroundColor="Red"
+                HorizontalOptions="CenterAndExpand"
+                Text="Content page 1"
+                VerticalOptions="CenterAndExpand" />
+            <Button
+                Clicked="AbrirPagina02"
+                HorizontalOptions="Center"
+                Text="Ir para página 2"
+                VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

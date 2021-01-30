@@ -17,7 +17,9 @@ namespace app1_testeDrive
              * MainPage = new NavigationPage(new ListagemView()); */
 
             //Aqui define qual a view de entrada, a tela inicial da aplicação
-            MainPage = new LoginView();
+            //MainPage = new LoginView();
+            
+            MainPage = new MasterDetailView(new Usuario());
         }
 
         protected override void OnStart()

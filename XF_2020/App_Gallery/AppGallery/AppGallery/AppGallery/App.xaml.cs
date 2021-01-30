@@ -11,7 +11,20 @@ namespace AppGallery
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Conteudo01());
+            //MainPage = new NavigationPage(new AppGallery.Pages.Navigation_page.Conteudo01());
+            MainPage = new AppGallery.Pages.PaginaCarousel.Carousel();
+
+
+
+            //Definir CaroulselPage
+            //var caroulselPage = new CarouselPage();
+            //caroulselPage.Children.Add(new AppGallery.Pages.PaginaCarousel.Conteudo01());
+            //caroulselPage.Children.Add(new AppGallery.Pages.PaginaCarousel.Conteudo02());
+            //caroulselPage.Children.Add(new AppGallery.Pages.PaginaCarousel.Conteudo03());
+
+            //caroulselPage.CurrentPage = caroulselPage.Children[1];
+
+            //MainPage = caroulselPage;
         }
 
         protected override void OnStart()

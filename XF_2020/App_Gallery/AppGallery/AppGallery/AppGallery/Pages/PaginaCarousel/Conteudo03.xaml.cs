@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppGallery.Pages.Navigation_page
+namespace AppGallery.Pages.PaginaCarousel
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Conteudo01 : ContentPage
+    public partial class Conteudo03 : ContentPage
     {
-        public Conteudo01()
+        public Conteudo03()
         {
             InitializeComponent();
-        }
-        
-        private async void AbrirPagina02(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Conteudo02());
         }
     }
 }

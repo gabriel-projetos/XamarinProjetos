@@ -12,6 +12,10 @@ using Xamarin.Forms;
 using Android.Content;
 using Android.Provider;
 using Java.IO;
+using Android.Util;
+using System.IO;
+using Android.Graphics;
+using Android;
 
 
 //Assembly: Marcado para ser usado como uma dependencia pelo dependencyService
@@ -77,9 +81,9 @@ namespace app1_testeDrive.Droid
             activity.StartActivityForResult(intent, 0);
         }
 
-        private static File PegarArquivoImagem()
+        private static Java.IO.File PegarArquivoImagem()
         {
-            File arquivoImagem;
+            Java.IO.File arquivoImagem;
             //Diretorio aonde vai ficar salvo as imagems
             Java.IO.File diretorio = new Java.IO.File(
                 Android.OS.Environment.GetExternalStoragePublicDirectory(
@@ -103,6 +107,18 @@ namespace app1_testeDrive.Droid
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
+            Java.IO.File diretorio = new Java.IO.File(
+                Android.OS.Environment.GetExternalStoragePublicDirectory(
+                    Android.OS.Environment.DirectoryPictures), "Imagens");
+
+            var resolucaoAntiga = SizeImagem(arquivoImagem.Path);
+
+
+
+            ResizeImage(arquivoImagem.Path, diretorio.Path, 1500, 1200);
+            //var altura = bitmap.Height;
+            //var largura = bitmap.Width;
+            //var Alterada_a_resolução = new System.Drawing.Size((int)bitmap.GetBitmapInfo().Height, (int)bitmap.GetBitmapInfo().Width);
             //SE TIRAR A FOTO e confirmar 
             if (resultCode == Result.Ok)
             {
@@ -125,6 +141,74 @@ namespace app1_testeDrive.Droid
                 //envia a msg para a classe masterviewmodel
                 MessagingCenter.Send<byte[]>(bytes, "FotoTirada");
             }
+        }
+
+        public Bitmap SizeImagem(string sourceFile)
+        {
+            var options = new BitmapFactory.Options()
+            {
+                InJustDecodeBounds = false,
+                InPurgeable = true,
+            };
+
+            using (var image = BitmapFactory.DecodeFile(sourceFile, options))
+            {
+                var sourceSize = new System.Drawing.Size((int)image.GetBitmapInfo().Height, (int)image.GetBitmapInfo().Width);
+                var teste = 5;
+
+                return image;
+            }
+        }
+
+
+        public void ResizeImage(string sourceFile, string targetFile, float maxWidth, float maxHeight)
+        {
+            var permissions = new string[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.WriteExternalStorage };
+            RequestPermissions(permissions, 77);
+            Bitmap bitmapScaled;
+            // First decode with inJustDecodeBounds=true to check dimensions
+            var options = new BitmapFactory.Options()
+            {
+                InJustDecodeBounds = false,
+                InPurgeable = true,
+            };
+
+            var image = BitmapFactory.DecodeFile(sourceFile, options);
+            //if (image != null)
+            //{
+                var sourceSize = new System.Drawing.Size((int)image.GetBitmapInfo().Height, (int)image.GetBitmapInfo().Width);
+
+                var maxResizeFactor = Math.Min(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+
+                string targetDir = System.IO.Path.GetDirectoryName(targetFile);
+                if (!Directory.Exists(targetDir))
+                    Directory.CreateDirectory(targetDir);
+
+
+                Java.IO.File diretorio = new Java.IO.File(
+                        Android.OS.Environment.GetExternalStoragePublicDirectory(
+                            Android.OS.Environment.DirectoryPictures), "Imagens");
+
+                
+                    var width = (int)(maxResizeFactor * sourceSize.Width);
+                    var height = (int)(maxResizeFactor * sourceSize.Height);
+
+                    bitmapScaled = Bitmap.CreateScaledBitmap(image, 4096, 3072, true);
+                    var stream = new Java.IO.FileInputStream(arquivoImagem);    
+                    using (Stream outStream = System.IO.File.Create($"{targetDir}/Testes.jpg"))
+                    {
+                        if (targetFile.ToLower().EndsWith("png"))
+                            bitmapScaled.Compress(Bitmap.CompressFormat.Png, 100, outStream);
+                        else
+                            bitmapScaled.Compress(Bitmap.CompressFormat.Jpeg, 80, outStream);
+
+                         var bytesss = bitmapScaled.ByteCount;
+                        var teste = 1;
+                        //return bitmapScaled;
+                    }
+                    //bitmapScaled.Recycle();
+
+
         }
     }
 }

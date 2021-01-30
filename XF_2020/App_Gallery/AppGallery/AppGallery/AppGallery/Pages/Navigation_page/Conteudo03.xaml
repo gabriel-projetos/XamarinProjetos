@@ -1,13 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppGallery.Pages.Navigation_page.Conteudo03"
-             Title="Conteúdo 03">
+<ContentPage
+    x:Class="AppGallery.Pages.Navigation_page.Conteudo03"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Conteúdo 03">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Content page 3"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button
+                Clicked="InserirPagePilha"
+                HorizontalOptions="Center"
+                Text="Inserir página na pilha"
+                VerticalOptions="Center" />
+            <Button
+                Clicked="RemoverPagePilha"
+                HorizontalOptions="Center"
+                Text="Remover página da pilha"
+                VerticalOptions="Center" />
+
+
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="Content page 3"
+                VerticalOptions="CenterAndExpand" />
+            <Button
+                Clicked="Voltar"
+                HorizontalOptions="Center"
+                Text="Pop Async / Voltar"
+                VerticalOptions="Center" />
+
+            <Button
+                Clicked="VoltarParaInicio"
+                HorizontalOptions="Center"
+                Text="Voltar para o inicio"
+                VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

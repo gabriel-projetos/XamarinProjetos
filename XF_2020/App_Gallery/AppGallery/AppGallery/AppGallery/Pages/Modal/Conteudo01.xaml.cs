@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AppGallery.Pages.Navigation_page
+namespace AppGallery.Pages.Modal
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Conteudo01 : ContentPage
@@ -16,10 +16,10 @@ namespace AppGallery.Pages.Navigation_page
         {
             InitializeComponent();
         }
-        
-        private async void AbrirPagina02(object sender, EventArgs e)
+
+        private void AbrirModal(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Conteudo02());
+            Navigation.PushModalAsync(new PaginaDeModal());
         }
     }
 }

@@ -12,7 +12,11 @@
             <Button Text="Pop Async / Voltar"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    Clicked="AbrirPagina02"/>
+                    Clicked="Button_Clicked"/>
+            <Button Text="Push Async"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Clicked="Button_Clicked_1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
